@@ -7,6 +7,8 @@ metadata:
     app.kubernetes.io/part-of: spring-sensors-rabbit
     apps.tanzu.vmware.com/has-tests: "true"
     apps.tanzu.vmware.com/workload-type: web
+    tanzu.app.live.view: "true"
+    tanzu.app.live.view.application.name: spring-sensors-rabbit-prod
     app.kubernetes.io/component: run
     carto.run/workload-name: spring-sensors-rabbit-prod
 spec:

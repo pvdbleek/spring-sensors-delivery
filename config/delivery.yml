@@ -6,6 +6,8 @@ metadata:
     app.kubernetes.io/part-of: spring-sensors-rabbit
     apps.tanzu.vmware.com/has-tests: "true"
     apps.tanzu.vmware.com/workload-type: web
+    tanzu.app.live.view: "true"
+    tanzu.app.live.view.application.name: spring-sensors-rabbit-prod
     app.kubernetes.io/component: run
     carto.run/workload-name: spring-sensors-rabbit-prod
 spec:
@@ -33,12 +35,14 @@ spec:
         conventions.apps.tanzu.vmware.com/framework: spring-boot
         services.conventions.apps.tanzu.vmware.com/mysql: workload
         services.conventions.apps.tanzu.vmware.com/rabbitmq: workload
+        tanzu.app.live.view: "true"
+        tanzu.app.live.view.application.name: spring-sensors-rabbit-prod
     spec:
       containers:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.endpoints.web.base-path="/actuator" -Dmanagement.health.probes.enabled="true" -Dmanagement.server.port="8081" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: registry.harbor.t3u.link/tap-project/supply-chain/spring-sensors-rabbit-prod-default@sha256:5924be811d0d1a5cb6b0d6525946aab2e135676f35447751e72a5fcfdcdc39ce
+        image: registry.harbor.t3u.link/tap-project/supply-chain/spring-sensors-rabbit-prod-default@sha256:439e471933bbd797b2e69b463610215fbfa5ecb0e19b7665c007f4c2c3991fe2
         name: workload
         ports:
         - containerPort: 8080
