@@ -6,8 +6,11 @@ metadata:
     app.kubernetes.io/part-of: spring-sensors-rabbit
     apps.tanzu.vmware.com/has-tests: "true"
     apps.tanzu.vmware.com/workload-type: web
+    management.endpoint.health.show-details: always
     tanzu.app.live.view: "true"
+    tanzu.app.live.view.application.actuator.port: "8081"
     tanzu.app.live.view.application.name: spring-sensors-rabbit-prod
+    tanzu.app.live.view.application.port: "8080"
     app.kubernetes.io/component: run
     carto.run/workload-name: spring-sensors-rabbit-prod
 spec:
@@ -33,16 +36,19 @@ spec:
         apps.tanzu.vmware.com/workload-type: web
         carto.run/workload-name: spring-sensors-rabbit-prod
         conventions.apps.tanzu.vmware.com/framework: spring-boot
+        management.endpoint.health.show-details: always
         services.conventions.apps.tanzu.vmware.com/mysql: workload
         services.conventions.apps.tanzu.vmware.com/rabbitmq: workload
         tanzu.app.live.view: "true"
-        tanzu.app.live.view.application.name: spring-sensors
+        tanzu.app.live.view.application.actuator.port: "8081"
+        tanzu.app.live.view.application.name: spring-sensors-rabbit-prod
+        tanzu.app.live.view.application.port: "8080"
     spec:
       containers:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.endpoints.web.base-path="/actuator" -Dmanagement.health.probes.enabled="true" -Dmanagement.server.port="8081" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: registry.harbor.t3u.link/tap-project/supply-chain/spring-sensors-rabbit-prod-default@sha256:439e471933bbd797b2e69b463610215fbfa5ecb0e19b7665c007f4c2c3991fe2
+        image: registry.harbor.t3u.link/tap-project/supply-chain/spring-sensors-rabbit-prod-default@sha256:80599eb0308ead7d748d66ab30b005a151d389769fcc3b6c6e2c69085de6f761
         name: workload
         ports:
         - containerPort: 8080
