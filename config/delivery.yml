@@ -36,7 +36,7 @@ spec:
         services.conventions.apps.tanzu.vmware.com/mysql: workload
         services.conventions.apps.tanzu.vmware.com/rabbitmq: workload
         tanzu.app.live.view: "true"
-        tanzu.app.live.view.application.name: spring-sensors-rabbit-prod
+        tanzu.app.live.view.application.name: spring-sensors
     spec:
       containers:
       - env:
