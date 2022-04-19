@@ -48,7 +48,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.endpoints.web.base-path="/actuator" -Dmanagement.health.probes.enabled="true" -Dmanagement.server.port="8081" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: registry.harbor.t3u.link/tap-project/supply-chain/spring-sensors-rabbit-prod-default@sha256:1d6048cfcba1b0ed14452d98f9f95912084edd2e657af7cd50dc51d60cd7b162
+        image: registry.harbor.t3u.link/tap-project/supply-chain/spring-sensors-rabbit-prod-default@sha256:04b60991baec8b71536f0e9ca6ec016b7232d2b64bd3dd3ce778a24466052de8
         name: workload
         ports:
         - containerPort: 8080
