@@ -26,6 +26,9 @@ spec:
           spring-boot-convention/spring-boot-actuator
           spring-boot-convention/service-intent-mysql
           spring-boot-convention/service-intent-rabbitmq
+          appliveview-sample/app-live-view-connector
+          appliveview-sample/app-live-view-appflavours
+          appliveview-sample/app-live-view-systemproperties
         developer.conventions/target-containers: workload
         services.conventions.apps.tanzu.vmware.com/mysql: mysql-connector-java/8.0.27
         services.conventions.apps.tanzu.vmware.com/rabbitmq: amqp-client/5.12.0
@@ -41,14 +44,15 @@ spec:
         services.conventions.apps.tanzu.vmware.com/rabbitmq: workload
         tanzu.app.live.view: "true"
         tanzu.app.live.view.application.actuator.port: "8081"
+        tanzu.app.live.view.application.flavours: spring-boot
         tanzu.app.live.view.application.name: spring-sensors-rabbit-prod
         tanzu.app.live.view.application.port: "8080"
     spec:
       containers:
       - env:
         - name: JAVA_TOOL_OPTIONS
-          value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.endpoints.web.base-path="/actuator" -Dmanagement.health.probes.enabled="true" -Dmanagement.server.port="8081" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: registry.harbor.t3u.link/tap-project/supply-chain/spring-sensors-rabbit-prod-default@sha256:a3d09f5bc348b11c8b86f2194c56465d7fdebf7367d15dea5459ac77205e9d64
+          value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.endpoint.health.show-details=always -Dmanagement.endpoints.web.base-path="/actuator" -Dmanagement.endpoints.web.exposure.include=* -Dmanagement.health.probes.enabled="true" -Dmanagement.server.port="8081" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
+        image: registry.harbor.t3u.link/tap-project/supply-chain/spring-sensors-rabbit-prod-default@sha256:8385976a2a5a96bd406f4c478c9fd688cbb7221544e7df5ce4661687e25cd8e1
         name: workload
         ports:
         - containerPort: 8080
